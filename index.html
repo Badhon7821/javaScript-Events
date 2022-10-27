@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Javascript Events</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Javascript Events</h1>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-5 section py-3 tshirt">
+          <img src="images/shirt.webp" />
+          <!-- This is the element that appears on top of the t-shirt -->
+          <div id="tshirt-preview"></div>
+        </div>
+        <div class="col-12 col-md-4 section py-3 customize">
+          <h2>Customize</h2>
+          <form
+            method="post"
+            action="http://www.example.org/register"
+            id="tshirt-form"
+          >
+            <div class="form-group">
+              <label for="tshirt-text">Put the text to T-shirt:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tshirt-text"
+                placeholder="Enter text"
+                autocomplete="off"
+                oninput="getValue()"
+              />
+            </div>
+            <div class="form-group">
+              <label for="tshirt-font">Choose font:</label>
+              <select
+                onchange="getOption()"
+                id="tshirt-font"
+                class="form-control"
+              >
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Monospace">Monospace</option>
+              </select>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Describe it!" />
+          </form>
+        </div>
+        <div class="col-12 col-md-3 d-flex section">
+          <div class="cart">
+            <h4>Description</h4>
+            <div id="message">Description is empty</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      //write your JavaScript Codes below
+      let btn = document.querySelector(".btn");
+      function getValue() {
+        let tshirtText = document.getElementById("tshirt-text").value;
+        document.getElementById("tshirt-preview").innerHTML = tshirtText;
+      }
+      function getOption() {
+        let tshirtPreview = document.getElementById("tshirt-preview");
+        let tshirtFont = document.getElementById("tshirt-font").value;
+        tshirtPreview.style.fontFamily = tshirtFont;
+      }
+
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        let tshirtText = document.getElementById("tshirt-text").value;
+        let tshirtFont = document.getElementById("tshirt-font").value;
+
+        document.getElementById(
+          "message"
+        ).textContent = `The text on T-shirt is "${tshirtText}" with font "${tshirtFont}"`;
+      });
+    </script>
+  </body>
+</html>
