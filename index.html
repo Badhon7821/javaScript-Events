@@ -71,24 +71,24 @@
     <script>
       //write your JavaScript Codes below
       let btn = document.querySelector(".btn");
+      let tshirtText = document.getElementById("tshirt-text");
+      let tshirtPreview = document.getElementById("tshirt-preview");
+      let tshirtFont = document.getElementById("tshirt-font");
+
       function getValue() {
-        let tshirtText = document.getElementById("tshirt-text").value;
-        document.getElementById("tshirt-preview").innerHTML = tshirtText;
+        const tShirt = tshirtText.value;
+        document.getElementById("tshirt-preview").innerHTML = tShirt;
       }
       function getOption() {
-        let tshirtPreview = document.getElementById("tshirt-preview");
-        let tshirtFont = document.getElementById("tshirt-font").value;
-        tshirtPreview.style.fontFamily = tshirtFont;
+        const tFont = tshirtFont.value;
+        tshirtPreview.style.fontFamily = tFont;
       }
 
       btn.addEventListener("click", function (e) {
         e.preventDefault();
-        let tshirtText = document.getElementById("tshirt-text").value;
-        let tshirtFont = document.getElementById("tshirt-font").value;
-
         document.getElementById(
           "message"
-        ).textContent = `The text on T-shirt is "${tshirtText}" with font "${tshirtFont}"`;
+        ).textContent = `The text on T-shirt is "${tshirtText.value}" with font "${tshirtFont.value}"`;
       });
     </script>
   </body>
